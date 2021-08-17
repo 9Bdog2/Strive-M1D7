@@ -12,6 +12,9 @@
         .background{
             background-color: crimson;
         }
+        .footer{
+            display: none;
+        }
 
         table {
     font-family: arial, sans-serif;
@@ -183,7 +186,7 @@
 
              const title = document.querySelector('h1')
              const background = document.querySelector('body')
-             const footer = document.querySelector('body')
+             const footer = document.querySelector('footer')
 
              function changeHeader(){
                  document.getElementsByTagName("h1")
@@ -194,8 +197,8 @@
                  background.classList.toggle("background")
              }
              function changeFooter(){
-                 document.getElementsByTagName("h1")
-                 footer.classList.toggle("background")
+                 document.getElementsByTagName("footer")
+                 footer.innerText = "Fake Text"
              }
 
       </script>
