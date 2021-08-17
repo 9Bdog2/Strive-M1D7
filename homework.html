@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Shop</title>
     <style>
-        .red-text{
+        .text{
             color: crimson;
         }
         .background{
@@ -112,6 +112,9 @@
     <input onclick="changeBackground()" type="button" value="Change background-color" />
     <input onclick="changeFooter()" type="button" value="Change Footer" />
     <input onclick="changeAmazonLinks()" type="button" value="Change Amazon Links" />
+    <input onclick="changePictureLinks()" type="button" value="Change Pictures" />
+    <input onclick="changePrices()" type="button" value="Change Prices" />
+
 
     <table>
         <tr>
@@ -192,7 +195,7 @@
 
              function changeHeader(){
                  document.getElementsByTagName("h1")
-                 title.classList.toggle("red-text")
+                 title.classList.toggle("text")
              }
              function changeBackground(){
                  document.getElementsByTagName("body")
