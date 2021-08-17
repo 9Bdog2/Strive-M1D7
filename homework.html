@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Shop</title>
     <style>
+        .red-text{
+            color: crimson;
+        }
+        .background{
+            background-color: crimson;
+        }
+
         table {
     font-family: arial, sans-serif;
     width: 100%;
@@ -98,6 +105,9 @@
 </head>
 <body>
     <h1>Best Smartphones Online</h1>
+    <input onclick="changeHeader()" type="button" value="Change H1 tag" />
+    <input onclick="changeBackground()" type="button" value="Change background-color" />
+    <input onclick="changeFooter()" type="button" value="Change Footer" />
 
     <table>
         <tr>
@@ -161,18 +171,39 @@
       <footer>
         <p>Best Smartphones Online</p>
         <p><a href="mailto:BestSmartphonesOnline@example.com">BestSmartphonesOnline@example.com</a></p>
-        <p>4503 Ferry Street,Florida,35630,USA</p>
+        <p>4503 Ferry Street,Florida,</br>35630 USA</p>
       </footer>
 
 
       <script>
-                    function openForm() {
-                     document.getElementById("myForm").style.display = "block";
-                    }
 
-                    function closeForm() {
-                    document.getElementById("myForm").style.display = "none";
-                     }
+            function closeForm() {
+                 document.getElementById("myForm").style.display = "none";
+             }
+
+             const title = document.querySelector('h1')
+             const background = document.querySelector('body')
+             const footer = document.querySelector('body')
+
+             function changeHeader(){
+                 document.getElementsByTagName("h1")
+                 title.classList.toggle("red-text")
+             }
+             function changeBackground(){
+                 document.getElementsByTagName("body")
+                 background.classList.toggle("background")
+             }
+             function changeFooter(){
+                 document.getElementsByTagName("h1")
+                 footer.classList.toggle("background")
+             }
+
       </script>
 </body>
 </html>
+
+
+
+
+
+
