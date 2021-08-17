@@ -111,6 +111,7 @@
     <input onclick="changeHeader()" type="button" value="Change H1 tag" />
     <input onclick="changeBackground()" type="button" value="Change background-color" />
     <input onclick="changeFooter()" type="button" value="Change Footer" />
+    <input onclick="changeAmazonLinks()" type="button" value="Change Amazon Links" />
 
     <table>
         <tr>
@@ -187,6 +188,7 @@
              const title = document.querySelector('h1')
              const background = document.querySelector('body')
              const footer = document.querySelector('footer')
+             const amazonLinks = document.querySelector('a')
 
              function changeHeader(){
                  document.getElementsByTagName("h1")
@@ -199,6 +201,11 @@
              function changeFooter(){
                  document.getElementsByTagName("footer")
                  footer.innerText = "Fake Text"
+             }
+             function changeAmazonLinks(){
+                 document.getElementsByTagName("a")
+                 for (let links of amazonLinks)
+                 links.classList.toggle("red-text")
              }
 
       </script>
