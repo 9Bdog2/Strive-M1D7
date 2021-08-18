@@ -25,6 +25,10 @@
             font-size: 50px;
         }
 
+        .hidden{
+          display: none;
+        }
+
         table {
     font-family: arial, sans-serif;
     width: 100%;
@@ -137,35 +141,35 @@
           <td>Nokia</td>
           <td>Finish phone</td>
           <td>450$</td>
-          <td><img class="pictures" src="http://cdn.alzashop.com/ImgW.ashx?fd=f16&cd=NOK2717c1"></td>
+          <td><img  src="http://cdn.alzashop.com/ImgW.ashx?fd=f16&cd=NOK2717c1"></td>
           <td><a href="https://www.amazon.com/s?k=nokia+Phones&ref=nb_sb_noss_2">Nokia</a></td>
         </tr>
         <tr>
           <td>Samsung</td>
           <td>Korean Phone</td>
           <td>650$</td>
-          <td><img class="pictures" src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s8-.jpg"></td>
+          <td><img  src="https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s8-.jpg"></td>
           <td><a href="https://www.amazon.com/Samsung-Galaxy-Phones/s?k=Samsung+Galaxy+Phones">Samsung</a></td>
         </tr>
         <tr>
             <td>LG</td>
             <td>American Phone</td>
             <td>450$</td>
-            <td><img class="pictures" src="https://www.notebookcheck.net/uploads/tx_nbc2/LgG7ThinQ__1_.jpg"></td>
+            <td><img  src="https://www.notebookcheck.net/uploads/tx_nbc2/LgG7ThinQ__1_.jpg"></td>
             <td><a href="https://www.amazon.com/s?k=LG+phone&ref=nb_sb_noss_2">LG</a></td>
         </tr>
         <tr>
             <td>Iphone</td>
             <td>American Phone</td>
             <td>950$</td>
-            <td><img class="pictures" src="https://p1.akcdn.net/full/733672356.apple-iphone-12-256gb.jpg"></td>
+            <td><img  src="https://p1.akcdn.net/full/733672356.apple-iphone-12-256gb.jpg"></td>
             <td><a href="https://www.amazon.com/iphone-Cell-Phones-Accessories/s?k=iphone&rh=n%3A7072561011">Iphone</a></td>
         </tr>
         <tr>
             <td>PlusOne</td>
             <td>Chinese Phone</td>
             <td>500$</td>
-            <td><img class="pictures" src="https://ae01.alicdn.com/kf/HTB1i_OtJVXXXXcoXFXXq6xXFXXXD/Original-Oneplus-One-64GB-One-plus-one-64GB-4G-FDD-LTE-Mobile-Phone-Cellphone-Snapdragon801-Quad.jpg_Q90.jpg_.webp"></td>
+            <td><img  src="https://ae01.alicdn.com/kf/HTB1i_OtJVXXXXcoXFXXq6xXFXXXD/Original-Oneplus-One-64GB-One-plus-one-64GB-4G-FDD-LTE-Mobile-Phone-Cellphone-Snapdragon801-Quad.jpg_Q90.jpg_.webp"></td>
             <td><a href="https://www.amazon.com/s?srs=14725774011">PlusOne</a></td>
         </tr>
       </table>
@@ -201,6 +205,7 @@
              const background = document.querySelector('body')
              const footer = document.querySelector('footer')
              const amazonLinks = document.querySelector('a')
+             const picture = document.querySelector('img')
 
              function changeHeader(){
                  document.getElementsByTagName("h1")
@@ -219,9 +224,9 @@
                  for (let links of amazonLinks)
                  links.classList.toggle("red-text") */
                  for (let node of document.querySelectorAll("a")) {
-                        node.classList.add("giant-font");
+                        node.classList.toggle("giant-font");
                 }
-                function toggleImagesClass() {
+                function changePictureLinks() {
                     for (let image of document.querySelectorAll("img")) {
                     image.classList.toggle("hidden"); // if the class is already set, remove it. otherwise, add it
                     }
