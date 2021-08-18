@@ -21,6 +21,10 @@
             height: 4em;
         }
 
+        .giant-font{
+            font-size: 50px;
+        }
+
         table {
     font-family: arial, sans-serif;
     width: 100%;
@@ -211,9 +215,13 @@
                  footer.innerText = "Fake Text"
              }
              function changeAmazonLinks(){
-                 document.getElementsByTagName("a")
+                 /* document.getElementsByTagName("a")
                  for (let links of amazonLinks)
-                 links.classList.toggle("red-text")
+                 links.classList.toggle("red-text") */
+                 for (let node of document.querySelectorAll("a")) {
+                        node.classList.add("giant-font");
+    }
+    }
              }
 
       </script>
@@ -225,3 +233,45 @@
 
 
 
+<!-- function changeH1Text() {
+    document.querySelector("h1").innerHTML = "Changed!";
+  }
+
+  function changeBackgroundColor() {
+    document.querySelector("body").style.backgroundColor = "green";
+  }
+
+  function changeFakeAddress() {
+    document.querySelector("footer > div:nth-child(2)").innerHTML =
+      "FAKE ADDRESS ðŸ¤«";
+    // document.querySelector('#address').innerHTML = "FAKE ADDRESS ðŸ¤«"
+  }
+
+  function addClassToLinks() {
+    for (let node of document.querySelectorAll("a")) {
+      node.classList.add("giant-font");
+    }
+  }
+
+  function toggleImagesClass() {
+    for (let image of document.querySelectorAll("img")) {
+      image.classList.toggle("hidden"); // if the class is already set, remove it. otherwise, add it
+    }
+  }
+
+  function setRandomColor() {
+    const color = getRandomColor();
+
+    for (let price of document.querySelectorAll("tr > td:nth-child(4)")) {
+      price.style.color = color;
+    }
+  }
+
+  function getRandomColor() {
+    const red = Math.round(Math.random() * 255);
+    const green = Math.round(Math.random() * 255);
+    const blue = Math.round(Math.random() * 255);
+
+    return "rgb(" + red + ", " + green + ", " + blue + ")";
+  }
+ -->
