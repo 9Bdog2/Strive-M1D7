@@ -220,9 +220,14 @@
                  links.classList.toggle("red-text") */
                  for (let node of document.querySelectorAll("a")) {
                         node.classList.add("giant-font");
+                }
+                function toggleImagesClass() {
+                    for (let image of document.querySelectorAll("img")) {
+                    image.classList.toggle("hidden"); // if the class is already set, remove it. otherwise, add it
+                    }
+  }
     }
-    }
-             }
+             
 
       </script>
 </body>

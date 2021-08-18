@@ -38,11 +38,104 @@
 
 
   <body>
+
+      <script lang="text/javascript">
+
+        const toggleSelectedDiv = function() {
+            let demoIdHeaderNode = document.getElementById("demo-id")
+            demoIdHeaderNode.classList.toggle("selected")
+        }
+
+        const toggleAllHeaders = function() {
+
+            let allOurHeaderNodes = document.querySelectorAll("h2")
+
+            /* THIS IS JUST A LONGER, MORE EXPLICIT VERSION OF THE BOTTOM ALTERNATIVE
+            
+            for (let i = 0; i < allOurHeaderNodes.length; i++) {
+                let header = allOurHeaderNodes[i]
+                header.classList.toggle("selected")
+            }*/
+
+            for (let header of allOurHeaderNodes){
+                header.classList.toggle("selected")
+            }
+        }
+
+        const createNewElement = function(eventData) {
+
+            // 'eventData' contains useful information about the event itself
+            // (coordinates of the click, key being pressed, the HTML node we interacted with...)
+
+            // --- Here we read the user input from the user-name textbox
+            let usernameInputNode = document.getElementById("user-name")
+            let userName = usernameInputNode.value
+
+            // --- Let's create a new 
+            let newElement = document.createElement("article")
+            // Creates this HTML code: <article></article>
+            newElement.innerText = `Hi, I'm ${userName}, and I clicked on X: ${eventData.screenX} Y: ${eventData.screenY}` // "Hi, I'm " + userName
+            // <article>Hi, I'm the new guy here</article>
+            newElement.style.color = "green"
+            // <article style="color:green;">Hi, I'm the new guy here</article>
+            newElement.id = "new-id"
+            // <article id="new-id" style="color:green;">Hi, I'm the new guy here</article>
+
+            // --- This way we can 'connect' our listener function to every click that happens on the newly created object
+            // - ALTERNATIVE 1
+            newElement.onclick = removeClickedElement
+            
+            // - ALTERNATIVE 2 (more complicated to write, more powerful: can connect several listeners to a single event)
+            // newElement.addEventListener("click", removeClickedElement)
+
+            // --- The new element still lives IN MEMORY ONLY, it's NOT attached to the DOM/PAGE
+            console.log(newElement)
+
+            // --- Let's find the parent of our newly created article
+            let containerNode = document.getElementById("article-container")
+
+            // --- Let's append the newly created element as the first child of the container node
+            containerNode.insertBefore(newElement, containerNode.children[0])
+        }
+
+        const removeClickedElement = function(eventData){
+
+            // 'eventData.target' points straight to the HTML Element that has been clicked! Super useful
+            let clickedElementNode = eventData.target
+
+            // We can then change its style and content...
+            clickedElementNode.style.color = "red"
+            clickedElementNode.innerText = "Ouch, I've been clicked!"
+
+            // ...or even remove that from the page
+            //clickedElementNode.remove()
+        }
+
+        window.onload = function() {
+           toggleSelectedDiv()
+
+           // Do all the stuff that needs to be done as soon as the page is fully loaded and ready to go
+
+           let userInputNode = document.getElementById("user-name")
+           userInputNode.onkeyup = changeText
+        }
+
+        const changeText = function() {          
+            let demoIdHeaderNode = document.getElementById("demo-id")
+            
+            let userInputNode = document.getElementById("user-name")
+
+            demoIdHeaderNode.innerText = userInputNode.value
+        }
+    </script>
+
+
     <h1>Accessing Elements in the DOM</h1>
 
     <button onclick="toggleSelectedDiv()">Toggle demo-id 'selected' class!</button>
     <input onclick="toggleAllHeaders()" type="button" value="Toggle all H2 tags" />
     
+    <!-- When we assign an event listener through HTML, we have to use the exact 'event' name if we want to get additional information about the event itself -->
     <button onclick="createNewElement(event)">Toggle new element</button>
 
     <br />
@@ -97,68 +190,5 @@
       </ul>
     </div>
 
-    <script lang="text/javascript">
-
-        const toggleSelectedDiv = function() {
-            let demoIdHeaderNode = document.getElementById("demo-id")
-            demoIdHeaderNode.classList.toggle("selected")
-        }
-
-        const toggleAllHeaders = function() {
-
-            let allOurHeaderNodes = document.querySelectorAll("h2")
-
-            /* THIS IS JUST A LONGER, MORE EXPLICIT VERSION OF THE BOTTOM ALTERNATIVE
-            
-            for (let i = 0; i < allOurHeaderNodes.length; i++) {
-                let header = allOurHeaderNodes[i]
-                header.classList.toggle("selected")
-            }*/
-
-            for (let header of allOurHeaderNodes){
-                header.classList.toggle("selected")
-            }
-        }
-
-        // We declare this variable OUTSIDE of the function: useful to keep track of something,
-        // because it's not getting destroyed when the function completes executing its block of code
-        let newElement
-
-        const createNewElement = function(eventData) {
-
-            // --- We check if the element already exists:
-            // --- ...if not, we create a new one...
-            if (newElement === undefined) {
-
-                let usernameInputNode = document.getElementById("user-name")
-                let userName = usernameInputNode.value
-
-                // --- Let's create a new 
-                newElement = document.createElement("article")
-                // Creates this HTML code: <article></article>
-                newElement.innerText = `Hi, I'm ${userName}, and I clicked on X: ${eventData.screenX} Y: ${eventData.screenY}` // "Hi, I'm " + userName
-                // <article>Hi, I'm the new guy here</article>
-                newElement.style.color = "green"
-                // <article style="color:green;">Hi, I'm the new guy here</article>
-                newElement.id = "new-id"
-                // <article id="new-id" style="color:green;">Hi, I'm the new guy here</article>
-
-                // --- The new element still lives IN MEMORY ONLY, it's NOT attached to the DOM/PAGE
-                console.log(newElement)
-
-                // --- Let's find the parent of our newly created article
-                let containerNode = document.getElementById("article-container")
-
-                // --- Let's append the newly created element as the first child of the container node
-                containerNode.insertBefore(newElement, containerNode.children[0])
-            } 
-            // ...if it already exists, we remove it
-            else {
-                newElement.remove()
-                newElement = undefined
-            }
-        }
-
-    </script>
   </body>
 </html> 
